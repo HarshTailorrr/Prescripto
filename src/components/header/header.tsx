@@ -1,11 +1,12 @@
+"use client"
 import Image from "next/image";
 import Link from "next/link";
-import { Button } from "../ui/button";
-import CommonButton from "../common/CommonButton";
-import { Menu } from "lucide-react";
+import CommonButton from "@/components/common/CommonButton";
 import HeaderDropDown from "./headerDropDown";
+import { usePathname } from "next/navigation";
 
 export default function Header() {
+  const pathname = usePathname();
   const navItems = [
     {
       nav: "Home",
@@ -13,15 +14,15 @@ export default function Header() {
     },
     {
       nav: "All Doctors",
-      path: "/",
+      path: "/all-doctor",
     },
     {
       nav: "About",
-      path: "/",
+      path: "/#0",
     },
     {
       nav: "Contact",
-      path: "/",
+      path: "/#0",
     },
   ];
   return (
@@ -40,34 +41,35 @@ export default function Header() {
             <li key={index}>
               <Link
                 href={items.path}
-                className="font-inter font-medium text-base text-primary-dark"
+                className={`font-inter font-medium text-base text-primary-dark pb-1 transition-all duration-400 ease-in-out ${
+                  pathname === items.path 
+                    ? "border-b-2 border-theme-color" 
+                    : "border-b-2 border-transparent"
+                }`}
               >
                 {items.nav}
               </Link>
             </li>
           ))}
         </ul>
-        <CommonButton className="bg-theme-color font-outfit cursor-pointer px-9 !py-2.5 text-lg font-normal leading-6 h-auto hover:bg-theme-color/80 transition-all duration-300 ease-in-out">
-          <Link href={'#'}>
-          Create account
-          </Link>
+        <CommonButton className="bg-theme-color font-outfit cursor-pointer px-9 !py-2.5 text-lg font-normal leading-6 h-auto hover:bg-theme-color/80 transition-all duration-400 ease-in-out">
+          <Link href={"#"}>Create account</Link>
         </CommonButton>
       </div>
 
       {/* for mobile screen */}
 
       <div className="w-full lg:hidden md:hidden flex justify-between p-2 items-center">
-          <div>
-            <HeaderDropDown navItems={navItems} />
-          
-          </div>
-          <Image
-            src={"/logo-prescripto.png"}
-            width={180}
-            height={30}
-            alt = 'logo'
-          />
-                  <CommonButton className="bg-theme-color font-outfit cursor-pointer px-3 !py-1.5  text-xs font-normal leading-6 h-auto hover:bg-theme-color/80 transition-all duration-300 ease-in-out">
+        <div>
+          <HeaderDropDown navItems={navItems} />
+        </div>
+        <Image
+          src={"/logo-prescripto.png"}
+          width={180}
+          height={30}
+          alt="logo"
+        />
+        <CommonButton className="bg-theme-color font-outfit cursor-pointer px-3 !py-1.5  text-xs font-normal leading-6 h-auto hover:bg-theme-color/80 transition-all duration-300 ease-in-out">
           Create account
         </CommonButton>
       </div>

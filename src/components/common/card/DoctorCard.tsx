@@ -7,11 +7,12 @@ interface DoctorCardProps {
     speciality : string,
     status : string,
     imgClasses : string
+    mainClasses? :string
 }
 
-export default function DoctorCard({image,name,speciality,status,imgClasses}:DoctorCardProps) {
+export default function DoctorCard({image,name,speciality,status,imgClasses,mainClasses}:DoctorCardProps) {
   return (
-    <div className="lg:min-w-[230px] max-w-[274px] border border-border-secondary rounded-lg bg-gray-primary-150">
+    <div className={`${mainClasses} lg:min-w-[230px] max-w-[274px] border border-border-secondary rounded-lg bg-gray-primary-150`}>
       <div className="max-h-[273px] min-h-[273px] rounded-t-xl flex justify-center">
         <Image
           src={image}

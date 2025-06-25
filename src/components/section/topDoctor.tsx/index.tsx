@@ -80,7 +80,7 @@ export default function TopDoctor() {
           </div>
           <div className="mt-14 flex justify-center">
             <CommonButton className="px-12 py-2 text-gray-primary-100 bg-gray-primary-150 text-xl font-outfit cursor-pointer hover:bg-gray-primary-100 transition-all duration-300 ease-in-out hover:text-white">
-                <Link href="#0">more</Link>
+                <Link href="/all-doctor">more</Link>
             </CommonButton>
           </div>
         </div>
