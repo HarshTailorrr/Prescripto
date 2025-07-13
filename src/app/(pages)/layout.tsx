@@ -31,7 +31,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={` ${inter.className} ${outfit.className} antialiased`}
+        className={` ${inter.className} ${outfit.className} antialiased`} suppressHydrationWarning={true}
       >
         <Header />
        <div className="mt-7">

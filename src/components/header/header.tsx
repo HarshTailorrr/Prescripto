@@ -1,12 +1,19 @@
-"use client"
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import CommonButton from "@/components/common/CommonButton";
 import HeaderDropDown from "./headerDropDown";
 import { usePathname } from "next/navigation";
 
+interface DecodedToken {
+  id?: string;
+  userId?: string;
+  user_id?: string;
+}
+
 export default function Header() {
   const pathname = usePathname();
+
   const navItems = [
     {
       nav: "Home",
@@ -25,6 +32,7 @@ export default function Header() {
       path: "/#0",
     },
   ];
+
   return (
     <>
       <div className="mx-auto lg:max-w-[1440px] p-4 lg:flex md:flex hidden items-center justify-between border-b border-primary-border">
@@ -42,8 +50,8 @@ export default function Header() {
               <Link
                 href={items.path}
                 className={`font-inter font-medium text-base text-primary-dark pb-1 transition-all duration-400 ease-in-out ${
-                  pathname === items.path 
-                    ? "border-b-2 border-theme-color" 
+                  pathname === items.path
+                    ? "border-b-2 border-theme-color"
                     : "border-b-2 border-transparent"
                 }`}
               >
@@ -53,7 +61,7 @@ export default function Header() {
           ))}
         </ul>
         <CommonButton className="bg-theme-color font-outfit cursor-pointer px-9 !py-2.5 text-lg font-normal leading-6 h-auto hover:bg-theme-color/80 transition-all duration-400 ease-in-out">
-          <Link href={"#"}>Create account</Link>
+          <Link href="/singup">Create account</Link>
         </CommonButton>
       </div>
 
@@ -69,8 +77,8 @@ export default function Header() {
           height={30}
           alt="logo"
         />
-        <CommonButton className="bg-theme-color font-outfit cursor-pointer px-3 !py-1.5  text-xs font-normal leading-6 h-auto hover:bg-theme-color/80 transition-all duration-300 ease-in-out">
-          Create account
+        <CommonButton className="bg-theme-color font-outfit cursor-pointer px-9 !py-2.5 text-lg font-normal leading-6 h-auto hover:bg-theme-color/80 transition-all duration-400 ease-in-out">
+          <Link href="/singup">Create account</Link>
         </CommonButton>
       </div>
     </>
